@@ -1,0 +1,17 @@
+[Oo]bj/
+[Bb]in/
+*.user
+/TestResults
+*.vspscc
+*.vssscc
+deploy
+deploy/*
+*.suo
+*.cache
+*.docstates
+*.csproj.user
+*/packages/*
+artifacts/*
+msbuild.log
+OnBoardFlash.dat
+_[Rr]e[Ss]harper.*/
