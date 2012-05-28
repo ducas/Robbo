@@ -27,7 +27,7 @@ namespace Robbo
 
         public void Stop()
         {
-            pwm.Set(freqHz, 0);
+            pwm.Set(false);
         }
 
         public void Reverse(int speed)
