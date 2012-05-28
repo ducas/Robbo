@@ -5,7 +5,7 @@ using Math = System.Math;
 
 namespace Robbo
 {
-    public class DistanceSensor : IDisposable
+    public class InfraredDistanceSensor : IDisposable
     {
         private const double y0 = 10;
         private const double x0 = 315;
@@ -15,7 +15,7 @@ namespace Robbo
 
         private readonly AnalogIn adc;
 
-        public DistanceSensor(AnalogIn.Pin pin)
+        public InfraredDistanceSensor(AnalogIn.Pin pin)
         {
             adc = new AnalogIn(pin);
         }
