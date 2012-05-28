@@ -27,8 +27,7 @@ namespace Robbo
                 var value = adc.Read();
                 var original = c / (value + .001D) - (c / x0) + y0;
                 var alternate1 = 12343.85 * Math.Pow(value, -1.15);
-                Debug.Print("original: " + original);
-                Debug.Print("alternate1: " + alternate1);
+                Debug.Print("original: " + original + ", alternate1: " + alternate1);
                 return alternate1;
             }
         }

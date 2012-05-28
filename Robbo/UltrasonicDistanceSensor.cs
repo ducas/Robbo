@@ -1,8 +1,9 @@
+using System;
 using GHIElectronics.NETMF.Hardware;
 
 namespace Robbo
 {
-    public class UltrasonicDistanceSensor
+    public class UltrasonicDistanceSensor : IDisposable
     {
         private readonly AnalogIn adc;
         private readonly double mVPerCm;
@@ -17,6 +18,11 @@ namespace Robbo
         public double Distance
         {
             get { return adc.Read() / mVPerCm; }
+        }
+
+        public void Dispose()
+        {
+            adc.Dispose();
         }
     }
 }

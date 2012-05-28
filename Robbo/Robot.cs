@@ -17,13 +17,13 @@ namespace Robbo
 
         private readonly Motor leftMotor;
         private readonly Motor rightMotor;
-        private readonly InfraredDistanceSensor infraredDistanceSensor;
+        private readonly UltrasonicDistanceSensor front;
 
         public Robot()
         {
             leftMotor = new Motor(PWM.Pin.PWM4, Cpu.Pin.GPIO_Pin5);
             rightMotor = new Motor(PWM.Pin.PWM6, Cpu.Pin.GPIO_Pin7, true);
-            infraredDistanceSensor = new InfraredDistanceSensor(AnalogIn.Pin.Ain10);
+            front = new UltrasonicDistanceSensor(AnalogIn.Pin.Ain10);
         }
 
         public void Go()
@@ -31,7 +31,7 @@ namespace Robbo
             GoForward();
             while (true)
             {
-                if (infraredDistanceSensor.Distance < interruptDistance)
+                if (front.Distance < interruptDistance)
                 {
                     Stop();
                     BackUp();
@@ -78,7 +78,7 @@ namespace Robbo
         {
             leftMotor.Dispose();
             rightMotor.Dispose();
-            infraredDistanceSensor.Dispose();
+            front.Dispose();
         }
     }
 }
