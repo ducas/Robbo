@@ -68,8 +68,8 @@ namespace Robbo
 
         private void TurnLeft()
         {
-            leftMotor.Forward(turnSpeed);
-            rightMotor.Reverse(turnSpeed);
+            leftMotor.Reverse(turnSpeed);
+            rightMotor.Forward(turnSpeed);
             Thread.Sleep(turnDuration);
             Stop();
         }
