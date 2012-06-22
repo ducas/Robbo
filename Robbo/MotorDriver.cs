@@ -4,7 +4,7 @@ using Microsoft.SPOT.Hardware;
 
 namespace Robbo
 {
-    public class MotorDriver : IDisposable
+    public class MotorDriverBridge : IDisposable
     {
         private readonly Motor leftMotor;
         private readonly Motor rightMotor;
@@ -19,8 +19,8 @@ namespace Robbo
         /// <param name="rightPwm">The pin connected to the righ motor channel's PWM pin on the driver (PWMB)</param>
         /// <param name="rightForwardPin">The pin connected to the righ motor channel's forward direction pin on the driver (BIN0)</param>
         /// <param name="rightReversePin">The pin connected to the righ motor channel's reverse direction pin on the driver (BIN1)</param>
-        /// <param name="standbyPin">The pin connected to the motor driver's standby pin (STBY)</param>
-        public MotorDriver(
+        /// <param name="standbyPin">The pin connected to the motor driver's standby pin (STBY) </param>
+        public MotorDriverBridge(
             PWM.Pin leftPwm, Cpu.Pin leftForwardPin, Cpu.Pin leftReversePin,
             PWM.Pin rightPwm, Cpu.Pin rightForwardPin, Cpu.Pin rightReversePin,
             Cpu.Pin standbyPin
