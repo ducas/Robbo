@@ -16,10 +16,10 @@ namespace Robbo
         private const int turnSpeed = 50;
         private const int turnDuration = 500;
 
-        private readonly MotorDriverBridge driver;
+        private readonly MotorDriver driver;
         private readonly UltrasonicDistanceSensor front;
 
-        public DiscoveryBot(MotorDriverBridge driver, UltrasonicDistanceSensor front)
+        public DiscoveryBot(MotorDriver driver, UltrasonicDistanceSensor front)
         {
             this.driver = driver;
             this.front = front;
@@ -35,8 +35,8 @@ namespace Robbo
                     driver.Stop();
                     Thread.Sleep(stopDuration);
 
-                    driver.Reverse(fullSpeed);
-                    Thread.Sleep(backUpDuration);
+                    //driver.Reverse(fullSpeed);
+                    //Thread.Sleep(backUpDuration);
 
                     while (front.Distance < interruptDistance)
                     {

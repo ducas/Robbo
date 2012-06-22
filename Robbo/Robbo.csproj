@@ -40,6 +40,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="DiscoveryBot.cs" />
     <Compile Include="UltrasonicDistanceSensor.cs" />
+    <Compile Include="VacuumBot.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FEZPanda_II_GHIElectronics.NETMF.FEZ, Version=4.1.4.0, Culture=neutral, processorArchitecture=MSIL">

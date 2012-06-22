@@ -7,7 +7,7 @@ namespace Robbo
     /// <summary>
     /// Represents a H Bridge Motor Driver
     /// </summary>
-    public class MotorDriverBridge : IDisposable
+    public class MotorDriver : IDisposable
     {
         private readonly Motor leftMotor;
         private readonly Motor rightMotor;
@@ -23,7 +23,7 @@ namespace Robbo
         /// <param name="rightForwardPin">The pin connected to the righ motor channel's forward direction pin on the driver (BIN0)</param>
         /// <param name="rightReversePin">The pin connected to the righ motor channel's reverse direction pin on the driver (BIN1)</param>
         /// <param name="standbyPin">The pin connected to the motor driver's standby pin (STBY) </param>
-        public MotorDriverBridge(
+        public MotorDriver(
             PWM.Pin leftPwm, Cpu.Pin leftForwardPin, Cpu.Pin leftReversePin,
             PWM.Pin rightPwm, Cpu.Pin rightForwardPin, Cpu.Pin rightReversePin,
             Cpu.Pin standbyPin
