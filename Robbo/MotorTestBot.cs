@@ -3,6 +3,9 @@ using Microsoft.SPOT.Hardware;
 
 namespace Robbo
 {
+    /// <summary>
+    /// A test bot that runs the motors in different directions.
+    /// </summary>
     public class MotorTestBot
     {
         private readonly Motor left;

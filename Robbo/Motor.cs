@@ -4,6 +4,9 @@ using Microsoft.SPOT.Hardware;
 
 namespace Robbo
 {
+    /// <summary>
+    /// Represents a motor driver channel for a motor
+    /// </summary>
     public class Motor : IDisposable
     {
         private const int freqHz = 1000;
@@ -13,7 +16,7 @@ namespace Robbo
         private readonly OutputPort reversePort;
 
         /// <summary>
-        /// Represents a motor driver channel for a motor
+        /// Creates an instance of the motor.
         /// </summary>
         /// <param name="pwmPin">The pin connected to the PWM input on the driver</param>
         /// <param name="forwardPin">The pin connected to the forward direction pin on the driver (IN0)</param>

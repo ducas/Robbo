@@ -3,6 +3,9 @@ using Microsoft.SPOT;
 
 namespace Robbo
 {
+    /// <summary>
+    /// A test bot that tests the motor different inputs on the motor driver.
+    /// </summary>
     public class MotorDriverTestBot
     {
         private readonly MotorDriverBridge driver;

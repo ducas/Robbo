@@ -4,6 +4,9 @@ using Microsoft.SPOT.Hardware;
 
 namespace Robbo
 {
+    /// <summary>
+    /// Represents a H Bridge Motor Driver
+    /// </summary>
     public class MotorDriverBridge : IDisposable
     {
         private readonly Motor leftMotor;
@@ -11,7 +14,7 @@ namespace Robbo
         private readonly OutputPort standbyPort;
 
         /// <summary>
-        /// Represents a H Bridge Motor Driver
+        /// Creates an instance of the motor driver.
         /// </summary>
         /// <param name="leftPwm">The pin connected to the left motor channel's PWM pin on the driver (PWMA)</param>
         /// <param name="leftForwardPin">The pin connected to the left motor channel's forward direction pin on the driver (AIN0)</param>

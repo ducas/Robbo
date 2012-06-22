@@ -4,6 +4,9 @@ using Microsoft.SPOT.Hardware;
 
 namespace Robbo
 {
+    /// <summary>
+    /// Represents an Ultrasonic Distance Sensor (Maxbotix LZ-EVx)
+    /// </summary>
     public class UltrasonicDistanceSensor : IDisposable
     {
         private const int maximumRange = 480;
@@ -12,6 +15,12 @@ namespace Robbo
         private readonly double scale;
         private readonly OutputPort control;
 
+        /// <summary>
+        /// Creates an instance of the distance sensor.
+        /// </summary>
+        /// <param name="analogPin">The pin connected to the analog output on the sensor (AN)</param>
+        /// <param name="controlPin">The pin connected to the receive input on the sensor (RX)</param>
+        /// <param name="supplyVoltage">The voltage supplied to the sensor in millivolts (usually 3300 or 5000)</param>
         public UltrasonicDistanceSensor(AnalogIn.Pin analogPin, Cpu.Pin controlPin, int supplyVoltage = 5000)
         {
             control = new OutputPort(controlPin, true);

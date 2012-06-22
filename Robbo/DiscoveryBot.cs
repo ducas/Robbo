@@ -3,6 +3,9 @@ using System.Threading;
 
 namespace Robbo
 {
+    /// <summary>
+    /// A simple robot program that rolls around attempting to avoid obstacles.
+    /// </summary>
     public class DiscoveryBot : IDisposable
     {
         private const int interruptDistance = 30;

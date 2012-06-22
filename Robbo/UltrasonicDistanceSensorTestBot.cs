@@ -3,6 +3,9 @@ using Microsoft.SPOT;
 
 namespace Robbo
 {
+    /// <summary>
+    /// A test bot that outputs the distance the sensor is detecting.
+    /// </summary>
     public class UltrasonicDistanceSensorTestBot
     {
         private readonly UltrasonicDistanceSensor sensor;
