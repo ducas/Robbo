@@ -8,38 +8,53 @@ namespace Robbo
     {
         private const int freqHz = 1000;
 
-        private readonly bool inverted;
         private readonly PWM pwm;
-        private readonly OutputPort directionPort;
+        private readonly OutputPort forwardPort;
+        private readonly OutputPort reversePort;
 
-        public Motor(PWM.Pin pwmPin, Cpu.Pin directionPin, bool inverted = false)
+        /// <summary>
+        /// Represents a motor driver channel for a motor
+        /// </summary>
+        /// <param name="pwmPin">The pin connected to the PWM input on the driver</param>
+        /// <param name="forwardPin">The pin connected to the forward direction pin on the driver (IN0)</param>
+        /// <param name="reversePin">The pin connected to the reverse direction pin on the driver (IN1)</param>
+        public Motor(PWM.Pin pwmPin, Cpu.Pin forwardPin, Cpu.Pin reversePin)
         {
-            this.inverted = inverted;
             pwm = new PWM(pwmPin);
-            directionPort = new OutputPort(directionPin, false);
+            forwardPort = new OutputPort(forwardPin, false);
+            reversePort = new OutputPort(reversePin, false);
         }
+
+        public int Pwm { set { pwm.Set(freqHz, (byte)value); } }
+        public bool In0 { set { forwardPort.Write(value); } }
+        public bool In1 { set { reversePort.Write(value); } }
 
         public void Forward(int speed)
         {
-            directionPort.Write(!inverted);
+            forwardPort.Write(true);
+            reversePort.Write(false);
             pwm.Set(freqHz, (byte)speed);
         }
 
         public void Stop()
         {
+            forwardPort.Write(false);
+            reversePort.Write(false);
             pwm.Set(false);
         }
 
         public void Reverse(int speed)
         {
-            directionPort.Write(inverted);
+            forwardPort.Write(false);
+            reversePort.Write(true);
             pwm.Set(freqHz, (byte)speed);
         }
 
         public void Dispose()
         {
             pwm.Dispose();
-            directionPort.Dispose();
+            forwardPort.Dispose();
+            reversePort.Dispose();
         }
     }
 }
