@@ -30,6 +30,7 @@
   </PropertyGroup>
   <Import Project="$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets" />
   <ItemGroup>
+    <Compile Include="DeviceInitializer.cs" />
     <Compile Include="IBot.cs" />
     <Compile Include="MessageReceivedEventArgs.cs" />
     <Compile Include="MotorDriver.cs" />

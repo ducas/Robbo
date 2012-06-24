@@ -43,13 +43,13 @@ namespace Robbo
             switch (bot)
             {
                 case botVacuum:
-                    selectedBot = new VacuumBot(CreateMotorDriver(), CreateDistanceSensor());
+                    selectedBot = new VacuumBot(DeviceInitializer.MotorDriver(), DeviceInitializer.DistanceSensor());
                     break;
                 case botMotorDriverTest:
-                    selectedBot = new MotorDriverTestBot(CreateMotorDriver());
+                    selectedBot = new MotorDriverTestBot(DeviceInitializer.MotorDriver());
                     break;
                 case botUltrasonicDistanceSensorTest:
-                    selectedBot = new UltrasonicDistanceSensorTestBot(CreateDistanceSensor(), CreatePiezo());
+                    selectedBot = new UltrasonicDistanceSensorTestBot(DeviceInitializer.DistanceSensor(), DeviceInitializer.Piezo());
                     break;
                 case botMotorTest:
                     selectedBot = new MotorTestBot(
@@ -59,10 +59,10 @@ namespace Robbo
                         );
                     break;
                 case botDiscovery:
-                    selectedBot = new DiscoveryBot(CreateMotorDriver(), CreateDistanceSensor(), CreatePiezo());
+                    selectedBot = new DiscoveryBot(DeviceInitializer.MotorDriver(), DeviceInitializer.DistanceSensor(), DeviceInitializer.Piezo());
                     break;
                 case botPiezoTest:
-                    new PiezoTestBot(CreatePiezo()).Go();
+                    new PiezoTestBot(DeviceInitializer.Piezo()).Go();
                     break;
                 default:
                     transceiver.Send("CMD_UNRECOGNIZED");
@@ -70,25 +70,6 @@ namespace Robbo
             }
             transceiver.Send("BOTSELECTED\r\n");
             handle.Set();
-        }
-
-        private static Piezo CreatePiezo()
-        {
-            return new Piezo(PWM.Pin.PWM2);
-        }
-
-        private static UltrasonicDistanceSensor CreateDistanceSensor()
-        {
-            return new UltrasonicDistanceSensor(AnalogIn.Pin.Ain5, (Cpu.Pin)FEZ_Pin.Digital.Di2);
-        }
-
-        private static MotorDriver CreateMotorDriver()
-        {
-            return new MotorDriver(
-                PWM.Pin.PWM1, (Cpu.Pin)FEZ_Pin.Digital.Di9, (Cpu.Pin)FEZ_Pin.Digital.Di8,
-                PWM.Pin.PWM6, (Cpu.Pin)FEZ_Pin.Digital.Di5, (Cpu.Pin)FEZ_Pin.Digital.Di4,
-                (Cpu.Pin)FEZ_Pin.Digital.Di7
-                );
         }
     }
 }
