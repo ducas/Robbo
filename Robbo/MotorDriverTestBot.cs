@@ -6,7 +6,7 @@ namespace Robbo
     /// <summary>
     /// A test bot that tests the motor different inputs on the motor driver.
     /// </summary>
-    public class MotorDriverTestBot
+    public class MotorDriverTestBot : IBot
     {
         private readonly MotorDriver driver;
 
@@ -94,6 +94,11 @@ namespace Robbo
             driver.PwmB = 0;
             driver.BIn0 = false;
             driver.BIn1 = false;
+        }
+
+        public void Dispose()
+        {
+            driver.Dispose();
         }
     }
 }

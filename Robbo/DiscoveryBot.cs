@@ -6,7 +6,7 @@ namespace Robbo
     /// <summary>
     /// A simple robot program that rolls around attempting to avoid obstacles.
     /// </summary>
-    public class DiscoveryBot : IDisposable
+    public class DiscoveryBot : IBot
     {
         private const int interruptDistance = 30;
         private const int fullSpeed = 100;
@@ -18,11 +18,13 @@ namespace Robbo
 
         private readonly MotorDriver driver;
         private readonly UltrasonicDistanceSensor front;
+        private readonly Piezo piezo;
 
-        public DiscoveryBot(MotorDriver driver, UltrasonicDistanceSensor front)
+        public DiscoveryBot(MotorDriver driver, UltrasonicDistanceSensor front, Piezo piezo)
         {
             this.driver = driver;
             this.front = front;
+            this.piezo = piezo;
         }
 
         public void Go()
@@ -30,7 +32,11 @@ namespace Robbo
             driver.Forward(fullSpeed);
             while (true)
             {
-                if (front.Distance < interruptDistance)
+                var frontDistance = front.Distance;
+
+                piezo.Play((int)((front.MaximumRange - frontDistance) * 10), 100);
+
+                if (frontDistance < interruptDistance)
                 {
                     driver.Stop();
                     Thread.Sleep(stopDuration);

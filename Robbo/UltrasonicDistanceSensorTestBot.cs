@@ -6,24 +6,32 @@ namespace Robbo
     /// <summary>
     /// A test bot that outputs the distance the sensor is detecting.
     /// </summary>
-    public class UltrasonicDistanceSensorTestBot
+    public class UltrasonicDistanceSensorTestBot : IBot
     {
         private readonly UltrasonicDistanceSensor sensor;
+        private readonly Piezo piezo;
 
-        public UltrasonicDistanceSensorTestBot(UltrasonicDistanceSensor sensor)
+        public UltrasonicDistanceSensorTestBot(UltrasonicDistanceSensor sensor, Piezo piezo)
         {
             this.sensor = sensor;
+            this.piezo = piezo;
         }
 
         public void Go()
         {
             while (true)
             {
-                Debug.Print(sensor.Distance + "cm");
+                var distance = sensor.Distance;
+                Debug.Print(distance + "cm");
+                piezo.Play((int)((sensor.MaximumRange - distance) * 10), 100);
                 Thread.Sleep(1000);
             }
             // ReSharper disable FunctionNeverReturns
         }
         // ReSharper restore FunctionNeverReturns
+        public void Dispose()
+        {
+            sensor.Dispose();
+        }
     }
 }

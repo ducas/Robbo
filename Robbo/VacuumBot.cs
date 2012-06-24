@@ -4,7 +4,7 @@ using Microsoft.SPOT;
 
 namespace Robbo
 {
-    public class VacuumBot : IDisposable
+    public class VacuumBot : IBot
     {
         private const int interruptDistance = 30;
         private const int fullSpeed = 100;
