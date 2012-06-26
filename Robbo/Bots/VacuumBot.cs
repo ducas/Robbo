@@ -4,18 +4,31 @@ using Robbo.Devices;
 
 namespace Robbo.Bots
 {
+    /// <summary>
+    /// A simple vacuum robot that spins around trying to avoid obstacles.
+    /// </summary>
     public class VacuumBot : IBot
     {
         private const int interruptDistance = 30;
         private const int fullSpeed = 100;
-        private const int forwardDuration = 500;
-        private const int stopDuration = 500;
-        private const int turnSpeed = 50;
-        private const int maxTurnDuration = 3000;
+
+        private const int maxForwardMultiplier = 100;
+        private const int forwardDuration = 100;
+
+        private const int turnSpeed = fullSpeed;
+        private const int minTurnDuration = 500;
+        private const int maxTurnMultiplier = 3;
+
+        private const int leftSpinStartSpeed = 5;
+        private const int leftSpinSpeedIncrement = 1;
+        private const int rightSpinSpeed = 100;
+        private const int spinSleepDuration = 100;
+        private const int maxSpinCount = 10;
 
         private readonly MotorDriver driver;
         private readonly UltrasonicDistanceSensor front;
         private readonly Random random = new Random();
+
 
         public VacuumBot(MotorDriver driver, UltrasonicDistanceSensor front)
         {
@@ -26,26 +39,20 @@ namespace Robbo.Bots
         public void Go()
         {
             var discoverCount = 0;
-            var left = 0;
-            var right = 100;
+            var spinCount = 0;
+            var left = leftSpinStartSpeed;
 
             driver.Forward(fullSpeed);
             while (true)
             {
                 if (front.Distance < interruptDistance)
                 {
-                    driver.Stop();
-                    Thread.Sleep(stopDuration);
-
-                    while (front.Distance < interruptDistance)
-                    {
-                        driver.TurnLeft(turnSpeed);
-                        Thread.Sleep((int)(random.NextDouble() * maxTurnDuration));
-                    }
+                    driver.TurnLeft(turnSpeed);
+                    Thread.Sleep(random.Next(maxTurnMultiplier) * minTurnDuration);
 
                     driver.Forward(fullSpeed);
-                    discoverCount = random.Next(10);
-                    left = 0;
+                    discoverCount = random.Next(maxForwardMultiplier);
+                    left = leftSpinStartSpeed;
                     continue;
                 }
 
@@ -53,13 +60,23 @@ namespace Robbo.Bots
                 {
                     Thread.Sleep(forwardDuration);
                     discoverCount--;
+                    if (discoverCount == 0) spinCount = 0;
                     continue;
                 }
 
-                driver.PwmA = (left < 100 ? ++left : left);
-                driver.PwmB = right;
+                if (left < fullSpeed && spinCount < maxSpinCount)
+                {
+                    driver.PwmA = left;
+                    driver.PwmB = rightSpinSpeed;
+                    spinCount++;
+                }
+                else if (left < fullSpeed && spinCount == maxSpinCount)
+                {
+                    left += leftSpinSpeedIncrement;
+                    spinCount = 0;
+                }
 
-                Thread.Sleep(500);
+                Thread.Sleep(spinSleepDuration);
             }
             // ReSharper disable FunctionNeverReturns
         }
