@@ -24,5 +24,10 @@ namespace Robbo.Devices
                 (Cpu.Pin)FEZ_Pin.Digital.Di7
                 );
         }
+
+        public static Bumper Bumper()
+        {
+            return new Bumper((Cpu.Pin)FEZ_Pin.Interrupt.Di13);
+        }
     }
 }

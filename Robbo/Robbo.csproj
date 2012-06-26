@@ -30,6 +30,8 @@
   </PropertyGroup>
   <Import Project="$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets" />
   <ItemGroup>
+    <Compile Include="Bots\BumperTestBot.cs" />
+    <Compile Include="Devices\Bumper.cs" />
     <Compile Include="Devices\DeviceInitializer.cs" />
     <Compile Include="Bots\IBot.cs" />
     <Compile Include="Devices\MessageReceivedEventArgs.cs" />
@@ -60,5 +62,6 @@
     <Reference Include="Microsoft.SPOT.Hardware.SerialPort" />
     <Reference Include="Microsoft.SPOT.Native">
     </Reference>
+    <Reference Include="Microsoft.SPOT.TinyCore" />
   </ItemGroup>
 </Project>
