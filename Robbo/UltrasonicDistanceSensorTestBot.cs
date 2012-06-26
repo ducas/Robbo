@@ -32,6 +32,7 @@ namespace Robbo
         public void Dispose()
         {
             sensor.Dispose();
+            piezo.Dispose();
         }
     }
 }

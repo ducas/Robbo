@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 
 namespace Robbo
@@ -10,21 +9,17 @@ namespace Robbo
     {
         private const int interruptDistance = 30;
         private const int fullSpeed = 100;
-        private const int forwardDuration = 500;
-        private const int stopDuration = 500;
-        private const int backUpDuration = 1000;
-        private const int turnSpeed = 50;
-        private const int turnDuration = 500;
+        private const int forwardDuration = 100;
+        private const int turnSpeed = 100;
+        private const int turnDuration = 100;
 
         private readonly MotorDriver driver;
         private readonly UltrasonicDistanceSensor front;
-        private readonly Piezo piezo;
 
-        public DiscoveryBot(MotorDriver driver, UltrasonicDistanceSensor front, Piezo piezo)
+        public DiscoveryBot(MotorDriver driver, UltrasonicDistanceSensor front)
         {
             this.driver = driver;
             this.front = front;
-            this.piezo = piezo;
         }
 
         public void Go()
@@ -32,27 +27,13 @@ namespace Robbo
             driver.Forward(fullSpeed);
             while (true)
             {
-                var frontDistance = front.Distance;
-
-                piezo.Play((int)((front.MaximumRange - frontDistance) * 10), 100);
-
-                if (frontDistance < interruptDistance)
+                while (front.Distance < interruptDistance)
                 {
-                    driver.Stop();
-                    Thread.Sleep(stopDuration);
-
-                    //driver.Reverse(fullSpeed);
-                    //Thread.Sleep(backUpDuration);
-
-                    while (front.Distance < interruptDistance)
-                    {
-                        driver.TurnLeft(turnSpeed);
-                        Thread.Sleep(turnDuration);
-                    }
-
-                    driver.Forward(fullSpeed);
+                    driver.TurnLeft(turnSpeed);
+                    Thread.Sleep(turnDuration);
                 }
 
+                driver.Forward(fullSpeed);
                 Thread.Sleep(forwardDuration);
             }
             // ReSharper disable FunctionNeverReturns

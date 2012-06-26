@@ -59,7 +59,7 @@ namespace Robbo
                         );
                     break;
                 case botDiscovery:
-                    selectedBot = new DiscoveryBot(DeviceInitializer.MotorDriver(), DeviceInitializer.DistanceSensor(), DeviceInitializer.Piezo());
+                    selectedBot = new DiscoveryBot(DeviceInitializer.MotorDriver(), DeviceInitializer.DistanceSensor());
                     break;
                 case botPiezoTest:
                     new PiezoTestBot(DeviceInitializer.Piezo()).Go();
