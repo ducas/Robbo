@@ -29,7 +29,7 @@ namespace Robbo.Bots
         public IBot AwaitBot()
         {
             Thread.Sleep(5000);
-            transceiver.Send("AWAITINGBOT\r\n");
+            transceiver.Send("BOT:AWAITING");
             transceiver.MessageReceived += TransceiverMessageReceived;
             handle.Reset();
             Debug.Print("Awaiting Bot.");
@@ -40,7 +40,7 @@ namespace Robbo.Bots
 
         private void TransceiverMessageReceived(object sender, MessageReceivedEventArgs e)
         {
-            var bot = botDiscovery; // e.Message; // overriden because xbee having issues
+            var bot = e.Message;
             switch (bot)
             {
                 case botVacuum:
@@ -66,10 +66,10 @@ namespace Robbo.Bots
                     new PiezoTestBot(DeviceInitializer.Piezo()).Go();
                     break;
                 default:
-                    transceiver.Send("CMD_UNRECOGNIZED");
+                    transceiver.Send("BOT:UNRECOGNIZED");
                     return;
             }
-            transceiver.Send("BOTSELECTED\r\n");
+            transceiver.Send("BOT:SELECTED");
             handle.Set();
         }
     }
