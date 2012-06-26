@@ -1,8 +1,9 @@
 using System.Threading;
 using Microsoft.SPOT;
 using Microsoft.SPOT.Hardware;
+using Robbo.Devices;
 
-namespace Robbo
+namespace Robbo.Bots
 {
     /// <summary>
     /// A test bot that runs the motors in different directions.

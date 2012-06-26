@@ -1,6 +1,6 @@
 using System;
 
-namespace Robbo
+namespace Robbo.Bots
 {
     public interface IBot : IDisposable
     {

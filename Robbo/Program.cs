@@ -1,6 +1,5 @@
-﻿using GHIElectronics.NETMF.FEZ;
-using GHIElectronics.NETMF.Hardware;
-using Microsoft.SPOT.Hardware;
+﻿using Robbo.Bots;
+using Robbo.Devices;
 
 namespace Robbo
 {

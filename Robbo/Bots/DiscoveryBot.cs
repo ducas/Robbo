@@ -1,6 +1,7 @@
 using System.Threading;
+using Robbo.Devices;
 
-namespace Robbo
+namespace Robbo.Bots
 {
     /// <summary>
     /// A simple robot program that rolls around attempting to avoid obstacles.

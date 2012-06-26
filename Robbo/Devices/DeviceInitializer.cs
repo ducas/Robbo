@@ -2,7 +2,7 @@ using GHIElectronics.NETMF.FEZ;
 using GHIElectronics.NETMF.Hardware;
 using Microsoft.SPOT.Hardware;
 
-namespace Robbo
+namespace Robbo.Devices
 {
     public static class DeviceInitializer
     {

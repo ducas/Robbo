@@ -1,8 +1,8 @@
 using System;
 using System.Threading;
-using Microsoft.SPOT;
+using Robbo.Devices;
 
-namespace Robbo
+namespace Robbo.Bots
 {
     public class VacuumBot : IBot
     {

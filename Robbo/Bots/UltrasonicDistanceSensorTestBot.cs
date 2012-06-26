@@ -1,7 +1,8 @@
 using System.Threading;
 using Microsoft.SPOT;
+using Robbo.Devices;
 
-namespace Robbo
+namespace Robbo.Bots
 {
     /// <summary>
     /// A test bot that outputs the distance the sensor is detecting.

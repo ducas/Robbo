@@ -3,7 +3,7 @@ using System.IO.Ports;
 using System.Text;
 using Microsoft.SPOT;
 
-namespace Robbo
+namespace Robbo.Devices
 {
     public class Transceiver : IDisposable
     {

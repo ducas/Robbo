@@ -1,4 +1,4 @@
-namespace Robbo
+namespace Robbo.Devices
 {
     public struct Tone
     {

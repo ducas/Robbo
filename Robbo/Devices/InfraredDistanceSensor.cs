@@ -3,7 +3,7 @@ using GHIElectronics.NETMF.Hardware;
 using Microsoft.SPOT;
 using Math = System.Math;
 
-namespace Robbo
+namespace Robbo.Devices
 {
     public class InfraredDistanceSensor : IDisposable
     {

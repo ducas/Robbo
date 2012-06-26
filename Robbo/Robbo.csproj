@@ -30,25 +30,25 @@
   </PropertyGroup>
   <Import Project="$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets" />
   <ItemGroup>
-    <Compile Include="DeviceInitializer.cs" />
-    <Compile Include="IBot.cs" />
-    <Compile Include="MessageReceivedEventArgs.cs" />
-    <Compile Include="MotorDriver.cs" />
-    <Compile Include="MotorDriverTestBot.cs" />
-    <Compile Include="Piezo.cs" />
-    <Compile Include="PiezoTestBot.cs" />
-    <Compile Include="RemoteBotSelector.cs" />
-    <Compile Include="Tone.cs" />
-    <Compile Include="Transceiver.cs" />
-    <Compile Include="UltrasonicDistanceSensorTestBot.cs" />
-    <Compile Include="InfraredDistanceSensor.cs" />
-    <Compile Include="Motor.cs" />
-    <Compile Include="MotorTestBot.cs" />
+    <Compile Include="Devices\DeviceInitializer.cs" />
+    <Compile Include="Bots\IBot.cs" />
+    <Compile Include="Devices\MessageReceivedEventArgs.cs" />
+    <Compile Include="Devices\MotorDriver.cs" />
+    <Compile Include="Bots\MotorDriverTestBot.cs" />
+    <Compile Include="Devices\Piezo.cs" />
+    <Compile Include="Bots\PiezoTestBot.cs" />
+    <Compile Include="Bots\RemoteBotSelector.cs" />
+    <Compile Include="Devices\Tone.cs" />
+    <Compile Include="Devices\Transceiver.cs" />
+    <Compile Include="Bots\UltrasonicDistanceSensorTestBot.cs" />
+    <Compile Include="Devices\InfraredDistanceSensor.cs" />
+    <Compile Include="Devices\Motor.cs" />
+    <Compile Include="Bots\MotorTestBot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="DiscoveryBot.cs" />
-    <Compile Include="UltrasonicDistanceSensor.cs" />
-    <Compile Include="VacuumBot.cs" />
+    <Compile Include="Bots\DiscoveryBot.cs" />
+    <Compile Include="Devices\UltrasonicDistanceSensor.cs" />
+    <Compile Include="Bots\VacuumBot.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FEZPanda_II_GHIElectronics.NETMF.FEZ, Version=4.1.4.0, Culture=neutral, processorArchitecture=MSIL">
@@ -60,6 +60,5 @@
     <Reference Include="Microsoft.SPOT.Hardware.SerialPort" />
     <Reference Include="Microsoft.SPOT.Native">
     </Reference>
-    <Reference Include="Microsoft.SPOT.TinyCore" />
   </ItemGroup>
 </Project>

@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using GHIElectronics.NETMF.Hardware;
 
-namespace Robbo
+namespace Robbo.Devices
 {
     public class Piezo : IDisposable
     {

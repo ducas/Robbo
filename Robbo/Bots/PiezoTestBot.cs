@@ -1,6 +1,7 @@
 using System.Threading;
+using Robbo.Devices;
 
-namespace Robbo
+namespace Robbo.Bots
 {
     public class PiezoTestBot
     {

@@ -2,7 +2,7 @@ using System;
 using GHIElectronics.NETMF.Hardware;
 using Microsoft.SPOT.Hardware;
 
-namespace Robbo
+namespace Robbo.Devices
 {
     /// <summary>
     /// Represents a motor driver channel for a motor

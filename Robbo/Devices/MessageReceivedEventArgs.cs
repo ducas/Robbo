@@ -1,6 +1,6 @@
 using Microsoft.SPOT;
 
-namespace Robbo
+namespace Robbo.Devices
 {
     public delegate void MessageReceivedEventHandler(object sender, MessageReceivedEventArgs e);
 

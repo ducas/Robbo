@@ -3,8 +3,9 @@ using GHIElectronics.NETMF.FEZ;
 using GHIElectronics.NETMF.Hardware;
 using Microsoft.SPOT;
 using Microsoft.SPOT.Hardware;
+using Robbo.Devices;
 
-namespace Robbo
+namespace Robbo.Bots
 {
     public class RemoteBotSelector
     {
