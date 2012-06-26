@@ -23,27 +23,31 @@ namespace Robbo
 
         private void PlaySimpsons(int t2, int t, int t3)
         {
-            piezo.Play(262, t3);
-            piezo.Play(330, t);
-            Thread.Sleep(t);
-            piezo.Play(367, t);
-            Thread.Sleep(t);
-            piezo.Play(440, t);
-            piezo.Play(392, t3);
-            piezo.Play(330, t);
-            Thread.Sleep(t);
-            piezo.Play(262, t2);
-            piezo.Play(220, t);
-            piezo.Play(185, t);
-            piezo.Play(175, t);
-            piezo.Play(175, t);
-            piezo.Play(196, t);
-            Thread.Sleep(t);
-            piezo.Play(233, t3);
-            piezo.Play(262, t);
-            piezo.Play(262, t);
-            piezo.Play(262, t);
-            piezo.Play(262, t);
+            piezo.Play(new[]
+                           {
+                               new Tone(Tone.C4, t3),
+                               new Tone(Tone.E4, t),
+                               new Tone(Tone.Breathe, t),
+                               new Tone(Tone.FSharp4, t),
+                               new Tone(Tone.Breathe, t),
+                               new Tone(Tone.A4, t),
+                               new Tone(Tone.G4, t3),
+                               new Tone(Tone.E4, t),
+                               new Tone(0, t),
+                               new Tone(Tone.C4, t2),
+                               new Tone(Tone.A3, t),
+                               new Tone(Tone.FSharp3, t),
+                               new Tone(Tone.F3, t),
+                               new Tone(Tone.F3, t),
+                               new Tone(Tone.G3, t),
+                               new Tone(0, t),
+                               new Tone(Tone.BFlat3, t3),
+                               new Tone(Tone.C4, t),
+                               new Tone(Tone.C4, t),
+                               new Tone(Tone.C4, t),
+                               new Tone(Tone.C4, t)
+                           }
+                );
         }
 
         private void PlayScale(int t)

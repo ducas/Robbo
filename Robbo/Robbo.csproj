@@ -38,6 +38,7 @@
     <Compile Include="Piezo.cs" />
     <Compile Include="PiezoTestBot.cs" />
     <Compile Include="RemoteBotSelector.cs" />
+    <Compile Include="Tone.cs" />
     <Compile Include="Transceiver.cs" />
     <Compile Include="UltrasonicDistanceSensorTestBot.cs" />
     <Compile Include="InfraredDistanceSensor.cs" />
