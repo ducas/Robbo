@@ -9,6 +9,10 @@ namespace Robbo.Bots
 {
     public class RemoteBotSelector
     {
+        const string botAwaiting = "BOT:AWAITING";
+        const string botUnrecognized = "BOT:UNRECOGNIZED";
+        const string botSelected = "BOT:SELECTED";
+
         private const string botUltrasonicDistanceSensorTest = "BOT:UDSTEST";
         private const string botVacuum = "BOT:VACUUM";
         private const string botMotorDriverTest = "BOT:MDRTEST";
@@ -31,7 +35,7 @@ namespace Robbo.Bots
         public IBot AwaitBot()
         {
             Thread.Sleep(5000);
-            transceiver.Send("BOT:AWAITING");
+            transceiver.Send(botAwaiting);
             transceiver.MessageReceived += TransceiverMessageReceived;
             handle.Reset();
             Debug.Print("Awaiting Bot.");
@@ -74,10 +78,10 @@ namespace Robbo.Bots
                     new AccelerometerTestBot(DeviceInitializer.Accelerometer()).Go();
                     break;
                 default:
-                    transceiver.Send("BOT:UNRECOGNIZED");
+                    transceiver.Send(botUnrecognized);
                     return;
             }
-            transceiver.Send("BOT:SELECTED");
+            transceiver.Send(botSelected);
             handle.Set();
         }
     }
