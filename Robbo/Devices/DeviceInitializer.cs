@@ -6,6 +6,8 @@ namespace Robbo.Devices
 {
     public static class DeviceInitializer
     {
+        static readonly I2CDevice i2CBus = new I2CDevice(null);
+
         public static Piezo Piezo()
         {
             return new Piezo(PWM.Pin.PWM2);
@@ -13,7 +15,7 @@ namespace Robbo.Devices
 
         public static UltrasonicDistanceSensor DistanceSensor()
         {
-            return new UltrasonicDistanceSensor(AnalogIn.Pin.Ain5, (Cpu.Pin)FEZ_Pin.Digital.Di2);
+            return new UltrasonicDistanceSensor(AnalogIn.Pin.Ain5, (Cpu.Pin)FEZ_Pin.Digital.Di13);
         }
 
         public static MotorDriver MotorDriver()
@@ -28,6 +30,11 @@ namespace Robbo.Devices
         public static Bumper Bumper()
         {
             return new Bumper((Cpu.Pin)FEZ_Pin.Interrupt.Di13);
+        }
+
+        public static Accelerometer Accelerometer()
+        {
+            return new Accelerometer(i2CBus);
         }
     }
 }

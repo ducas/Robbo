@@ -9,12 +9,14 @@ namespace Robbo.Bots
 {
     public class RemoteBotSelector
     {
-        const string botUltrasonicDistanceSensorTest = "BOT:UDSTEST";
-        const string botVacuum = "BOT:VACUUM";
-        const string botMotorDriverTest = "BOT:MDRTEST";
-        const string botMotorTest = "BOT:MOTTEST";
-        const string botDiscovery = "BOT:DISCOVERY";
-        const string botPiezoTest = "BOT:PZOTEST";
+        private const string botUltrasonicDistanceSensorTest = "BOT:UDSTEST";
+        private const string botVacuum = "BOT:VACUUM";
+        private const string botMotorDriverTest = "BOT:MDRTEST";
+        private const string botMotorTest = "BOT:MOTTEST";
+        private const string botDiscovery = "BOT:DISCOVERY";
+        private const string botSafeDiscovery = "BOT:SAFEDISCO";
+        private const string botPiezoTest = "BOT:PZOTEST";
+        private const string botAccelerometerTest = "BOT:ACCTEST";
 
         private readonly Transceiver transceiver;
         private readonly AutoResetEvent handle;
@@ -62,8 +64,14 @@ namespace Robbo.Bots
                 case botDiscovery:
                     selectedBot = new DiscoveryBot(DeviceInitializer.MotorDriver(), DeviceInitializer.DistanceSensor());
                     break;
+                case botSafeDiscovery:
+                    selectedBot = new SafeDiscoveryBot(DeviceInitializer.MotorDriver(), DeviceInitializer.DistanceSensor(), DeviceInitializer.Accelerometer());
+                    break;
                 case botPiezoTest:
                     new PiezoTestBot(DeviceInitializer.Piezo()).Go();
+                    break;
+                case botAccelerometerTest:
+                    new AccelerometerTestBot(DeviceInitializer.Accelerometer()).Go();
                     break;
                 default:
                     transceiver.Send("BOT:UNRECOGNIZED");
