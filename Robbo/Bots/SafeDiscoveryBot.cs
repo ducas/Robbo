@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Microsoft.SPOT;
 using Robbo.Devices;
@@ -14,7 +15,7 @@ namespace Robbo.Bots
         private const int forwardDuration = 100;
         private const int turnSpeed = 100;
         private const int turnDuration = 100;
-        private const int breakDuration = 1000;
+        private const int flipDuration = 500;
 
         private readonly MotorDriver driver;
         private readonly UltrasonicDistanceSensor front;
@@ -29,23 +30,13 @@ namespace Robbo.Bots
 
         public void Go()
         {
-            driver.Forward(fullSpeed);
             while (true)
             {
-                var acceleration = accelerometer.GetData();
-                if (acceleration.Z < 0 || acceleration.Y < -0.5 || 0.5 < acceleration.Y)
-                {
-                    Debug.Print(acceleration.Y + " " + acceleration.Z);
-                    driver.Stop();
-                    Thread.Sleep(breakDuration);
-                    continue;
-                }
+                if (TryAvoidFlip())
+                    Thread.Sleep(flipDuration);
 
-                while (front.Distance < interruptDistance)
-                {
-                    driver.TurnLeft(turnSpeed);
+                while (TryAvoidCollision())
                     Thread.Sleep(turnDuration);
-                }
 
                 driver.Forward(fullSpeed);
                 Thread.Sleep(forwardDuration);
@@ -53,6 +44,42 @@ namespace Robbo.Bots
             // ReSharper disable FunctionNeverReturns
         }
         // ReSharper restore FunctionNeverReturns
+
+        private bool TryAvoidCollision()
+        {
+            if (front.Distance < interruptDistance)
+            {
+                driver.TurnLeft(turnSpeed);
+                return true;
+            }
+            return false;
+        }
+
+        private bool TryAvoidFlip()
+        {
+            var acceleration = accelerometer.GetData();
+            if (acceleration.Z <= 0)
+            {
+                driver.Stop();
+                return true;
+            }
+            if (acceleration.Y < -0.5)
+            {
+                driver.TurnRight(turnSpeed);
+                return true;
+            }
+            if (0.5 < acceleration.Y)
+            {
+                driver.TurnLeft(turnSpeed);
+                return true;
+            }
+            if (acceleration.X < -0.5)
+            {
+                driver.Reverse(fullSpeed);
+                return true;
+            }
+            return false;
+        }
 
         public void Dispose()
         {
