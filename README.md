@@ -10,8 +10,8 @@ This project aims to build an automated tank bot using the .Net Micro Framework.
 
 * FEZ Panda II [Datasheet](https://raw.github.com/ducas/Robbo/master/Datasheets/FEZ_Panda_II_UserManual.pdf)
 * Motor Driver 1A Dual TB6612FNG (ROB-09457) [Datasheet](https://raw.github.com/ducas/Robbo/master/Datasheets/TB6612FNG.pdf)
-* Triple Axis Accelerometer Breakout - ADXL345 (SEN-09836) [Datasheet](https://raw.github.com/ducas/Robbo/master/Datasheets/MB1000_Datasheet.pdf)
-* Ultrasonic Range Finder - MaxBotix LV-EZ0 (SEN-08502) [Datasheet](https://raw.github.com/ducas/Robbo/master/Datasheets/ADXL345.pdf)
+* Triple Axis Accelerometer Breakout - ADXL345 (SEN-09836) [Datasheet](https://raw.github.com/ducas/Robbo/master/Datasheets/ADXL345.pdf)
+* Ultrasonic Range Finder - MaxBotix LV-EZ0 (SEN-08502) [Datasheet](https://raw.github.com/ducas/Robbo/master/Datasheets/MB1000_Datasheet.pdf)
 * 4xAAA Battery Holder
 * 1x9V Battery Holder
 
