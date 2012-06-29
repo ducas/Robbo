@@ -25,29 +25,32 @@ This project aims to build an automated tank bot using the .Net Micro Framework.
 
 The Fritzing diagram is included in the Fritzing directory (both as a Fritzing file and PNG).
 
-### Power
+![Wiring Diagram](https://raw.github.com/ducas/Robbo/master/Fritzing/robbo.PNG)
 
 * 4xAAA -> Motor Driver
-	* Red -> Vin
+	* Red -> VM
 	* Black -> GND
 * 9V -> FEZ Panda
 	* Red -> Vin
 	* Black -> GND
 * Accelerometer -> FEZ Panda
-	* SCL -> SCL
-	* SDA -> SDA
+	* SCL -> D3 (SCL)
+	* SDA -> D2 (SDA)
 	* SDO -> GND
 	* CS -> 3.3V
 	* VCC -> 3.3V
 	* GND -> GND
 * Motor Driver -> FEZ Panda
-	* PWMA
-	* AIN0
-	* AIN1
-	* STBY
-	* PWMB
-	* BIN0
-	* BIN1
+	* PWMA -> D10 (PWM6)
+	* AIN0 -> D9
+	* AIN1 -> D8
+	* STBY -> D7
+	* PWMB -> D6 (PWM1)
+	* BIN0 -> D5
+	* BIN1 -> D4
+	* VCC -> 5V
+	* AOUT0/1 -> Left Motor
+	* BOUT0/1 -> Right Motor
 * Distance Sensor -> FEZ Panda
 	* GND -> GND
 	* +5 -> 5V
