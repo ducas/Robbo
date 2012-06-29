@@ -9,17 +9,17 @@ This project aims to build an automated tank bot using the .Net Micro Framework.
 ### Electronics
 
 * FEZ Panda II
-* Dual Motor Driver
-* Triple Axis Accelerometer
-* Ultrasonic Distance Finder - MaxBotix LV-EZ0
+* Motor Driver 1A Dual TB6612FNG (ROB-09457)
+* Triple Axis Accelerometer Breakout - ADXL345 (SEN-09836)
+* Ultrasonic Range Finder - MaxBotix LV-EZ0 (SEN-08502)
 * 4xAAA Battery Holder
 * 1x9V Battery Holder
 
 ### Moving Stuff
-* Tamiya Plate Set
-* Tamiya Track and Wheel Set
-* Tamiya Dual Gearbox
-* Low Current Replacement Motors
+* Tamiya Plate Set 70157
+* Tamiya Track and Wheel Set 70100
+* Tamiya Dual Gearbox 70168
+* Low Current Replacement Motors - Solarbotics RM3
 
 ## Hooking Things Up
 
