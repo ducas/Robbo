@@ -35,8 +35,8 @@ The Fritzing diagram is included in the Fritzing directory (both as a Fritzing f
 	* Black -> GND
 * Accelerometer -> FEZ Panda
 	* SCL -> SCL
-	* SCA -> SCA
-	* SCO -> GND
+	* SDA -> SDA
+	* SDO -> GND
 	* CS -> 3.3V
 	* VCC -> 3.3V
 	* GND -> GND
