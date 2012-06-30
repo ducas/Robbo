@@ -23,8 +23,8 @@ namespace Robbo.Devices
         /// <summary>
         /// Plays a tone.
         /// </summary>
-        /// <param name="freq">The desired frequency.</param>
-        /// <param name="duration">The duration of the tone.</param>
+        /// <param name="freq">The frequency of the tone in hertz.</param>
+        /// <param name="duration">The duration of the tone in milliseconds.</param>
         public void Play(int freq, int duration)
         {
             pwm.Set(freq, 50);

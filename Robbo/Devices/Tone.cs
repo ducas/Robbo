@@ -1,5 +1,8 @@
 namespace Robbo.Devices
 {
+    /// <summary>
+    /// Represents a tone to be played by a Piezo buzzer.
+    /// </summary>
     public struct Tone
     {
         #region Tone Frequencies
@@ -52,6 +55,9 @@ namespace Robbo.Devices
         public const int A3 = 220;
         public const int BFlat3 = 233;
         public const int B3 = 247;
+        /// <summary>
+        /// Middle C.
+        /// </summary>
         public const int C4 = 262;
         public const int CSharp4 = 277;
         public const int D4 = 294;
@@ -106,13 +112,24 @@ namespace Robbo.Devices
         public const int EFlat8 = 4978;
         #endregion
 
+        /// <summary>
+        /// Creates an instance of a Tone.
+        /// </summary>
+        /// <param name="frequency">The frequency of the tone in hertz.</param>
+        /// <param name="duration">The duration of the tone in milliseconds.</param>
         public Tone(int frequency, int duration)
         {
             Frequency = frequency;
             Duration = duration;
         }
 
+        /// <summary>
+        /// The frequency of the tone in hertz.
+        /// </summary>
         public int Frequency;
+        /// <summary>
+        /// The duration of the tone in milliseconds.
+        /// </summary>
         public int Duration;
     }
 }
