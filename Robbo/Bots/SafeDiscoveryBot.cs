@@ -1,6 +1,4 @@
-using System;
 using System.Threading;
-using Microsoft.SPOT;
 using Robbo.Devices;
 
 namespace Robbo.Bots
