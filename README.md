@@ -56,3 +56,31 @@ The Fritzing diagram is included in the Fritzing directory (both as a Fritzing f
 	* +5 -> 5V
 	* RX -> D11
 	* AN -> A0
+
+## Finally - The Code!
+
+### Devices
+
+* Motor Driver - represented by MotorDriver class which allows for moving forward and reverse along with turning left and right.
+* Motor - represented by Motor class which uses PWM and digital ports to provide basic forward, reverse and stop methods.
+* Ultrasonic Distance Sensor - represented by UltrasonicDistanceSensor class which uses analog input and control port to provide distances in cm.
+* Accelerometer - represented by Accelerometer class which uses I2C to communicated with sensor and calculate gravitational force in 3 axes.
+* Piezo - represented by Piezo class which uses PWM to play tones.
+* Bumper - represented by Bumper class which uses interrupts to raise an event when the switch is pressed and circuit is closed.
+
+### Bots
+
+This project has several bot implementations. These bots are either simple test bots to test certain components or autonomous bots.
+
+* Test Bots
+	* AccelerometerTestBot - Prints acceleration from accelerometer to debug output.
+	* BumperTestBot - Listens for Bumped event and prints to the debug output.
+	* MotorDriverTestBot - Outputs different speeds and signals to control the channels on the motor driver.
+	* MotorTestBot - Drives the motors in forward and reverse patterns.
+	* PiezoTestBot - Plays some cute tunes on a Piezo buzzer.
+	* UltrasonicDistanceSensorTestBot - Prints distance from the ultrasonic range finder to debug output.
+* Autonomous Bots
+	* DiscoveryBot - Uses the motor driver and ultrasonic range finder to drive the tank bot around and try not hit things.
+	* SafeDiscoveryBot - Uses the motor driver, ultrasonic range finder and accelerometer to drive the tank bot around and try not hit things, but get out of trouble when elevations change.
+	* VacuumBot - Uses the motor driver and ultrasonic range finder to drive the tank bot around in circles without running into things.
+
