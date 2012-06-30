@@ -30,11 +30,17 @@ namespace Robbo.Devices
             scale = supplyVoltage / 512D / 2.54;
         }
 
+        /// <summary>
+        /// The distance in centimeters.
+        /// </summary>
         public double Distance
         {
             get { return adc.Read() / scale; }
         }
 
+        /// <summary>
+        /// The maximum range of the sensor in centimeters.
+        /// </summary>
         public int MaximumRange
         {
             get { return maximumRange; }
